@@ -140,6 +140,8 @@ def encode (path):
             print("") 
 
     except Exception as e:
+        # Never encountered an error here, but just in case.
+        # Open filestreams are errors waiting to happen
         print(f"An unexpected error occoured: {e.message}")
 
 # Remove first item of argv because it contains name of this file
