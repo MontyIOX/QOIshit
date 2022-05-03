@@ -41,8 +41,10 @@ def encode (path):
         except IOError as e:
             if e.errno == errno.EACCESS:
                 print("Permission Denied.")
+                return
             else:
                 print(e)
+                return
     else:
         print(f"File {path} does not exist.")
         return
