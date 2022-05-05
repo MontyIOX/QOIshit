@@ -62,7 +62,7 @@ def encode (path):
 
     try:
         with open(f"./output/{Path(path).stem}.qoi", "wb") as fo:
-
+            
             # write QOI header
             # Python only allows one at a time, for whatever reason
             fo.write(magic)
@@ -115,6 +115,7 @@ def encode (path):
                      db < 2 and db > -3 ):
                     # Bitshifting to line up the difference values
                     # Eight bits, first are 01 (64 = 01000000) dr = 000000xx is shifted by four bits to 00xx0000 and so on
+                    # Difference has a bias of two, so we add two to each value
                     fo.write((64 | dr + 2 << 4 | dg + 2 << 2 | db + 2).to_bytes(1, byteorder='big', signed=False))
                     last = rgb
                     current += 1
